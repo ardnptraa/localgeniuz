@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Local Geniuz | Bimbel dan Kursus Bahasa Inggris</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --primary:#007E6E;
+  --dark:#0f172a;
+  --light:#f8fafc;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+body{
+  background:var(--light);
+  color:#111;
+  scroll-behavior:smooth;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:white;
+  padding:15px 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 5px 20px rgba(0,0,0,.05);
+  z-index:1000;
+  transition:0.3s;
+}
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.nav-left h2{
+  color:var(--primary);
+  font-size:24px;
+  font-weight:700;
+}
+.logo{
+  height:45px;
+  width:auto;
+  border-radius:8px; /* Opsional: sedikit bulat */
+}
+.nav-right a{
+  text-decoration:none;
+  color:#111;
+  margin-left:25px;
+  font-weight:500;
+  transition:0.3s;
+}
+.nav-right a:hover{
+  color:var(--primary);
+}
+
+/* HERO */
+header{
+  height:100vh;
+  background:linear-gradient(135deg,#2563eb,#1e40af);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding-top:80px; /* memberi ruang untuk navbar */
+}
+header h1{
+  font-size:48px;
+  font-weight:700;
+  margin-bottom:15px;
+}
+header p{
+  font-size:20px;
+  margin:15px 0;
+  line-height:1.6;
+}
+header .btn{
+  background:white;
+  color:var(--primary);
+  padding:14px 30px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+  border:none;
+  cursor:pointer;
+  transition:0.3s;
+}
+header .btn:hover{
+  background:var(--primary);
+  color:white;
+}
+.btn{
+  background:white;
+  color:var(--primary);
+  padding:14px 30px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+  border:none;
+  cursor:pointer;
+}
+
+/* SECTION */
+section{
+  padding:100px 30px;
+  max-width:1100px;
+  margin:auto;
+}
+.title{text-align:center;margin-bottom:40px}
+.title h2{font-size:36px}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+.card{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+  transition:.3s;
+}
+.card:hover{
+  transform:translateY(-10px)
+}
+
+/* TESTIMONI */
+.testimoni{
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  text-align:center;
+}
+.testimoni p{font-style:italic}
+.testimoni h4{margin-top:15px;color:var(--primary)}
+
+/* FORM */
+form{
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  max-width:500px;
+  margin:auto;
+}
+
+input,select{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+.error{
+  color:red;
+  font-size:14px;
+}
+
+/* FOOTER */
+footer{
+  background:#020617;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+/* ANIMATION */
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-top:15px;
+}
+
+.socials a{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+  transition:.3s;
+}
+
+.socials a:hover{
+  transform:translateY(-5px);
+}
+
+#promo span{
+  font-size:40px;
+  display:block;
+}
+
+#promo div{
+  text-align:center;
+}
+.blog-cards .card{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+  transition:.3s;
+}
+
+.blog-cards .card:hover{
+  transform:translateY(-8px);
+}
+
+.blog-cards .card h3{
+  font-size:18px;
+  margin-bottom:10px;
+  color:var(--dark);
+}
+
+.blog-cards .card p{
+  font-size:14px;
+  color:#555;
+  line-height:1.5;
+}
+
+.blog-cards .card .btn{
+  background:var(--primary);
+  color:white;
+  padding:8px 16px;
+  border-radius:50px;
+  text-decoration:none;
+  font-size:14px;
+  transition:.3s;
+}
+
+.blog-cards .card .btn:hover{
+  background:#007E6E;
+}
+.profile-cards .card{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.05);
+  transition:.3s;
+}
+
+.profile-cards .card:hover{
+  transform:translateY(-8px);
+}
+
+.profile-cards .card h3{
+  font-size:18px;
+  margin-bottom:10px;
+  color:var(--dark);
+}
+
+.profile-cards .card p{
+  font-size:14px;
+  color:#555;
+  line-height:1.5;
+}
+
+.profile-testi p{
+  font-style:italic;
+  font-size:13px;
+  color:var(--primary);
+  margin-top:10px;
+}
+.accordion-item{
+  background:white;
+  border-radius:15px;
+  margin-bottom:15px;
+  box-shadow:0 10px 20px rgba(0,0,0,.05);
+  overflow:hidden;
+}
+
+.accordion-btn{
+  width:100%;
+  text-align:left;
+  padding:18px 20px;
+  font-size:16px;
+  font-weight:500;
+  background:var(--light);
+  border:none;
+  cursor:pointer;
+  outline:none;
+  transition:0.3s;
+}
+
+.accordion-btn:hover{
+  background:var(--primary);
+  color:white;
+}
+
+.accordion-content{
+  max-height:0;
+  padding:0 20px;
+  overflow:hidden;
+  transition:max-height 0.3s ease;
+  background:white;
+}
+
+.accordion-content p{
+  padding:15px 0;
+  color:#555;
+  font-size:14px;
+  line-height:1.5;
+}
+.gallery-item{
+  width:100%;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.gallery-item:hover{
+  transform:scale(1.05);
+}
+#options button{
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:var(--primary);
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+  font-size:14px;
+}
+
+#options button:hover{
+  background:#1e40af;
+}
+#chat-box::-webkit-scrollbar{
+  width:6px;
+}
+#chat-box::-webkit-scrollbar-thumb{
+  background:var(--primary);
+  border-radius:3px;
+}
+
+#subscribe-form input{
+  font-size:14px;
+}
+
+#subscribe-form button:hover{
+  background:#f1f1f1;
+  color:#1e40af;
+}
+.schedule-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
+.schedule-card{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+  position:relative;
+  transition:.3s;
+}
+
+.schedule-card:hover{
+  transform:translateY(-8px);
+}
+
+.schedule-card h3{
+  color:var(--primary);
+  margin-bottom:8px;
+}
+
+.schedule-card ul{
+  margin:15px 0;
+  padding-left:18px;
+  color:#444;
+}
+
+.schedule-card ul li{
+  margin-bottom:6px;
+}
+
+.status{
+  position:absolute;
+  top:20px;
+  right:20px;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.status.open{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.status.full{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="PNG Hitam NEW LOGO LG.png" alt="Local Geniuz Logo" class="logo">
+    <h2>Local Geniuz</h2>
+  </div>
+  <div class="nav-right">
+    <a href="#program">Program</a>
+    <a href="#testimoni">Testimoni</a>
+    <a href="#daftar">Daftar</a>
+    <a href="#founder">Founder</a>
+  </div>
+</nav>
+
+<header>
+  <div>
+    <h1>Local Geniuz</h1>
+    <p>
+      Bimbingan Belajar Modern untuk Membantu Siswa  
+      Berprestasi, Percaya Diri, dan Siap Masa Depan
+    </p><br><br>
+    
+    <a href="#daftar" class="btn">Daftar Sekarang</a>
+  </div>
+</header>
+
+<section id="founder" class="fade" style="padding:80px 30px;max-width:1100px;margin:auto">
+  <div class="title">
+    <h2>Tutor & Founder Local Geniuz</h2>
+    <p style="color:#555;font-size:16px;margin-top:10px">Kenali tim pengajar dan pendiri kami yang profesional & berdedikasi</p>
+  </div>
+
+  <div class="profile-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-top:50px">
+    
+    <!-- Founder -->
+    <div class="card profile">
+      <img src="IMG-20241004-WA0004.jpg" alt="Founder Local Geniuz" style="width:100%;border-radius:15px;margin-bottom:15px">
+      <h3>Maratul Inayah</h3>
+      <p style="color:#555;font-size:14px;margin-bottom:15px">
+        Founder & Head Tutor Local Geniuz. Berpengalaman dalam pendidikan bahasa Inggris, metode belajar modern, dan pengembangan soft skill siswa.
+      </p>
+      <div class="profile-testi">
+        <p>"Tutor sangat profesional dan inspiratif!" – Siswa SMA</p>
+      </div>
+    </div>
+
+    <!-- Tutor 1 -->
+    <div class="card profile">
+      <img src="PNG Hitam NEW LOGO LG.png" alt="Tutor Local Geniuz" style="width:100%;border-radius:15px;margin-bottom:15px">
+      <h3>Lisa Anggraini</h3>
+      <p style="color:#555;font-size:14px;margin-bottom:15px">
+        Tutor Matematika & IPA. Memiliki pengalaman mengajar lebih dari 5 tahun dengan metode belajar menyenangkan.
+      </p>
+      <div class="profile-testi">
+        <p>"Nilai anak saya meningkat drastis berkat bimbingan Lisa!" – Orang Tua</p>
+      </div>
+    </div>
+
+    <!-- Tutor 2 -->
+    <div class="card profile">
+      <img src="Whatsapp_Logo.png" alt="Tutor Local Geniuz" style="width:100%;border-radius:15px;margin-bottom:15px">
+      <h3>Rizky Pratama</h3>
+      <p style="color:#555;font-size:14px;margin-bottom:15px">
+        Tutor Bahasa Inggris & Speaking. Membantu siswa meningkatkan kemampuan berbicara dan percaya diri.
+      </p>
+      <div class="profile-testi">
+        <p>"Belajar speaking jadi lebih mudah dan menyenangkan!" – Siswa SMP</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="founder" class="fade">
+  <div class="title">
+    <h2>Founder & Tutor</h2>
+  </div>
+
+  <div class="card" style="max-width:900px;margin:auto">
+    <h3>Surya Ardana Putra</h3>
+    <p style="color:#007E6E;font-weight:500;margin-bottom:10px">
+      Founder Local Geniuz | Tutor & Educator
+    </p>
+
+    <p>
+      Saya adalah pendidik yang memiliki ketertarikan besar pada dunia pendidikan,
+      pengembangan diri, dan kewirausahaan. Local Geniuz saya dirikan dengan tujuan
+      membantu siswa belajar dengan cara yang lebih mudah dipahami, menyenangkan,
+      dan relevan dengan kebutuhan mereka.
+    </p>
+
+    <p>
+      Dalam proses belajar mengajar, saya percaya bahwa setiap siswa memiliki
+      potensi yang unik. Oleh karena itu, pendekatan pembelajaran di Local Geniuz
+      tidak hanya berfokus pada nilai akademik, tetapi juga pada kepercayaan diri,
+      pola berpikir, dan kebiasaan belajar siswa.
+    </p>
+
+    <p>
+      Dengan latar belakang pendidikan di bidang Bahasa Inggris dan pengalaman
+      mendampingi siswa dari berbagai jenjang, saya berkomitmen untuk menciptakan
+      lingkungan belajar yang nyaman, komunikatif, dan berorientasi pada perkembangan
+      jangka panjang siswa.
+    </p>
+  </div>
+</section>
+
+<section id="program" class="fade">
+  <div class="title"><h2>Program Unggulan</h2></div>
+  <div class="cards">
+    <div class="card">
+  <h3>📘 Program SD</h3>
+  <p>
+    Pendampingan semua mata pelajaran dengan metode
+    fun learning agar siswa lebih semangat dan percaya diri.
+  </p>
+</div>
+<div class="card">
+  <h3>📗 Program SMP</h3>
+  <p>
+    Fokus Matematika, IPA, dan Bahasa Inggris
+    untuk meningkatkan pemahaman konsep dan nilai sekolah.
+  </p>
+</div>
+
+<div class="card">
+  <h3>📕 Program SMA</h3>
+  <p>
+    Pendalaman materi akademik dan persiapan UTBK
+    dengan pembahasan soal yang terarah.
+  </p>
+</div>
+
+<div class="card">
+  <h3>🌍 English Class</h3>
+  <p>
+    Kursus Bahasa Inggris untuk meningkatkan
+    speaking, vocabulary, dan kepercayaan diri siswa.
+  </p>
+</div>
+
+  </div>
+</section>
+
+<section id="testimoni" class="fade">
+  <div class="title"><h2>Apa Kata Mereka?</h2></div>
+  <div class="testimoni">
+    <p id="testiText">"Belajarnya seru dan mudah dipahami!"</p>
+    <h4 id="testiName">– Siswa SMP</h4>
+  </div>
+</section>
+
+<section id="promo" class="fade" style="background:linear-gradient(135deg,#007E6E);color:white;padding:60px 30px;text-align:center;border-radius:20px;margin:50px auto;max-width:900px">
+  <h2 style="font-size:32px;margin-bottom:20px">Promo Spesial Local Geniuz 🎁</h2>
+  <p style="font-size:18px;margin-bottom:30px">Daftar sebelum <strong>31 Desember 2025</strong> dan dapatkan <strong>Diskon 10%</strong>!</p>
+  
+  <div id="countdown" style="display:flex;justify-content:center;gap:25px;font-size:24px;font-weight:700">
+    <div><span id="days">00</span><br>Hari</div>
+    <div><span id="hours">00</span><br>Jam</div>
+    <div><span id="minutes">00</span><br>Menit</div>
+    <div><span id="seconds">00</span><br>Detik</div>
+  </div>
+</section>
+
+
+<section id="daftar" class="fade">
+  <div class="title"><h2>Form Pendaftaran</h2></div>
+  <p style="text-align:center;max-width:600px;margin:auto;color:#555">
+    Isi data di bawah ini dan tim kami akan menghubungi Anda melalui WhatsApp untuk informasi jadwal dan kelas.
+  </p><br>
+  <form id="formDaftar">
+    <input type="text" id="nama" placeholder="Nama Lengkap">
+    <input type="text" id="kelas" placeholder="Kelas">
+    <select id="program">
+      <option value="">Pilih Program</option>
+      <option>SD</option>
+      <option>SMP</option>
+      <option>SMA</option>
+      <option>English Class</option>
+    </select>
+    <input type="text" id="wa" placeholder="Nomor WhatsApp">
+    <p class="error" id="error"></p>
+    <button class="btn" type="submit">Daftar & Konsultasi Gratis</button>
+  </form>
+</section>
+
+<section id="blog" class="fade" style="padding:80px 30px;max-width:1100px;margin:auto">
+  <div class="title">
+    <h2>Tips Edukasi & Belajar</h2>
+    <p style="color:#555;font-size:16px;margin-top:10px">Artikel ringan, tips belajar, dan video tutorial dari Local Geniuz</p>
+  </div>
+
+  <div class="blog-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-top:40px">
+    <!-- Blog Card 1 -->
+    <div class="card">
+      <img src="tips1.jpg" alt="Tips Belajar 1" style="width:100%;border-radius:12px;margin-bottom:15px">
+      <h3>5 Cara Cepat Menghafal Kosakata Inggris</h3>
+      <p>Temukan teknik mudah untuk mengingat kata-kata baru agar lebih cepat lancar berbicara.</p>
+      <a href="#" class="btn" style="margin-top:10px;display:inline-block;font-size:14px">Baca Selengkapnya</a>
+    </div>
+
+    <!-- Blog Card 2 -->
+    <div class="card">
+      <img src="tips2.jpg" alt="Tips Belajar 2" style="width:100%;border-radius:12px;margin-bottom:15px">
+      <h3>Cara Efektif Mengerjakan Soal Matematika</h3>
+      <p>Tips dan trik agar siswa SMP & SMA bisa menyelesaikan soal matematika lebih cepat dan tepat.</p>
+      <a href="#" class="btn" style="margin-top:10px;display:inline-block;font-size:14px">Baca Selengkapnya</a>
+    </div>
+
+    <!-- Blog Card 3 -->
+    <div class="card">
+      <img src="tips3.jpg" alt="Tips Belajar 3" style="width:100%;border-radius:12px;margin-bottom:15px">
+      <h3>Video Tutorial: Speaking Bahasa Inggris</h3>
+      <p>Tonton tutorial singkat kami dan praktekkan kosakata sehari-hari dengan mudah.</p>
+      <a href="#" class="btn" style="margin-top:10px;display:inline-block;font-size:14px">Tonton Video</a>
+    </div>
+  </div>
+
+  <!-- Instagram / TikTok feed (opsional, embed code) -->
+  <div style="margin-top:50px;text-align:center">
+    <h3 style="margin-bottom:20px">Follow Konten Edukasi Kami</h3>
+    <div id="social-feed" style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap">
+      <!-- Contoh embed IG / TikTok (pakai iframe atau plugin) -->
+      <iframe src="https://www.instagram.com/p/Ckexample/embed" width="300" height="400" style="border:none;overflow:hidden;border-radius:12px"></iframe>
+      <iframe src="https://www.tiktok.com/embed/vexample" width="300" height="400" style="border:none;overflow:hidden;border-radius:12px"></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="galeri" class="fade" style="padding:80px 30px;max-width:1100px;margin:auto">
+  <div class="title">
+    <h2>Galeri Kegiatan & Video</h2>
+    <p style="color:#555;font-size:16px;margin-top:10px">Lihat momen belajar, kelas, dan event seru di Local Geniuz</p>
+  </div>
+
+  <div class="gallery" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:40px">
+    <!-- Foto 1 -->
+    <img src="Icon_app_Lemon8-removebg-preview.png" alt="Kegiatan Belajar 1" class="gallery-item">
+
+    <!-- Foto 2 -->
+    <img src="Lemond8-removebg-preview.png" alt="Kegiatan Belajar 2" class="gallery-item">
+
+    <!-- Foto 3 -->
+    <img src="Icon_app_Lemon8-removebg-preview.png" alt="Kegiatan Belajar 3" class="gallery-item">
+
+    <!-- Video (thumbnail) -->
+    <img src="Lemond8-removebg-preview.png" alt="Video Tutorial" class="gallery-item" data-video="https://www.youtube.com/embed/example">
+  </div>
+</section>
+
+<!-- Lightbox Popup -->
+<div id="lightbox" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:2000">
+  <span id="close-lightbox" style="position:absolute;top:20px;right:30px;font-size:30px;color:white;cursor:pointer">&times;</span>
+  <img id="lightbox-img" src="" style="max-width:90%;max-height:80%;border-radius:12px">
+  <iframe id="lightbox-video" src="" frameborder="0" allowfullscreen style="display:none;width:90%;height:80%;border-radius:12px"></iframe>
+</div>
+
+<section id="mini-game" class="fade" style="padding:80px 30px;max-width:900px;margin:auto;text-align:center">
+  <div class="title">
+    <h2>Mini Game Edukasi 🎮</h2>
+    <p style="color:#555;font-size:16px;margin-top:10px">Tes kemampuanmu dan dapatkan modul gratis!</p>
+  </div>
+
+  <div id="quiz-container" style="margin-top:40px;background:white;padding:30px;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,.05)">
+    <div id="question" style="font-size:18px;margin-bottom:20px"></div>
+    <div id="options" style="display:flex;flex-direction:column;gap:15px"></div>
+    <button id="next-btn" class="btn" style="margin-top:20px;display:none">Next</button>
+    <div id="result" style="margin-top:20px;font-size:16px;display:none"></div>
+  </div>
+</section>
+
+<!-- Live Chat Button -->
+<div id="chat-widget" style="position:fixed;bottom:30px;right:30px;z-index:1000">
+  <button id="chat-btn" style="background:var(--primary);color:white;padding:15px 20px;border-radius:50px;border:none;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.2);font-weight:600">
+    💬 Chat Kami
+  </button>
+
+  <!-- Chat Box -->
+  <div id="chat-box" style="display:none;position:absolute;bottom:60px;right:0;width:300px;background:white;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,.2);overflow:hidden">
+    <div style="background:var(--primary);color:white;padding:15px;font-weight:600">Live Chat</div>
+    <div id="chat-messages" style="height:250px;overflow-y:auto;padding:10px;font-size:14px"></div>
+    <div style="display:flex;gap:5px;padding:10px">
+      <input type="text" id="chat-input" placeholder="Tulis pesan..." style="flex:1;padding:8px;border-radius:10px;border:1px solid #ccc">
+      <button id="send-btn" style="background:var(--primary);color:white;padding:8px 12px;border-radius:10px;border:none;cursor:pointer">Kirim</button>
+    </div>
+  </div>
+</div>
+
+<section id="faq" class="fade" style="padding:80px 30px;max-width:900px;margin:auto">
+  <div class="title">
+    <h2>FAQ / Tanya Jawab Cepat</h2>
+    <p style="color:#555;font-size:16px;margin-top:10px">Pertanyaan umum seputar Local Geniuz</p>
+  </div>
+
+  <div class="accordion" style="margin-top:40px">
+    <!-- FAQ 1 -->
+    <div class="accordion-item">
+      <button class="accordion-btn">Apa metode pembelajaran di Local Geniuz?</button>
+      <div class="accordion-content">
+        <p>Metode kami menggabungkan pembelajaran interaktif, game-based learning, dan tutor berpengalaman untuk hasil maksimal.</p>
+      </div>
+    </div>
+
+    <!-- FAQ 2 -->
+    <div class="accordion-item">
+      <button class="accordion-btn">Apakah ada kelas online?</button>
+      <div class="accordion-content">
+        <p>Ya, Local Geniuz menyediakan kelas online untuk semua program agar siswa dapat belajar dari rumah dengan nyaman.</p>
+      </div>
+    </div>
+
+    <!-- FAQ 3 -->
+    <div class="accordion-item">
+      <button class="accordion-btn">Berapa biaya pendaftaran?</button>
+      <div class="accordion-content">
+        <p>Biaya berbeda sesuai program, mulai dari SD, SMP, SMA, hingga English Class. Hubungi WA kami untuk info lengkap.</p>
+      </div>
+    </div>
+
+    <!-- FAQ 4 -->
+    <div class="accordion-item">
+      <button class="accordion-btn">Apakah ada trial class?</button>
+      <div class="accordion-content">
+        <p>Ya, kami menyediakan kelas percobaan gratis agar siswa dan orang tua bisa menilai kualitas pembelajaran.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="payment" class="fade" style="padding:80px 30px;max-width:700px;margin:auto;text-align:center">
+  <div class="title">
+    <h2>Pendaftaran & Pembayaran Online</h2>
+    <p style="color:#555;font-size:16px;margin-top:10px">Daftar program Local Geniuz dan bayar langsung via online</p>
+  </div>
+
+  <form id="payment-form" style="margin-top:40px;display:flex;flex-direction:column;gap:15px;background:white;padding:30px;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,.05)">
+    <input type="text" id="pay-nama" placeholder="Nama Lengkap" required style="padding:12px;border-radius:10px;border:1px solid #ccc">
+    <input type="text" id="pay-kelas" placeholder="Kelas" required style="padding:12px;border-radius:10px;border:1px solid #ccc">
+    <select id="pay-program" required style="padding:12px;border-radius:10px;border:1px solid #ccc">
+      <option value="">Pilih Program</option>
+      <option>SD</option>
+      <option>SMP</option>
+      <option>SMA</option>
+      <option>English Class</option>
+    </select>
+    <input type="text" id="pay-wa" placeholder="Nomor WhatsApp" required style="padding:12px;border-radius:10px;border:1px solid #ccc">
+    <p id="pay-error" class="error"></p>
+    <button type="submit" class="btn" style="padding:12px;border-radius:50px;background:var(--primary);color:white;border:none;font-weight:bold;cursor:pointer">Daftar & Bayar</button>
+  </form>
+</section>
+
+<section id="newsletter" class="fade" style="padding:80px 30px;max-width:700px;margin:auto;text-align:center;background:linear-gradient(135deg,#2563eb,#1e40af);color:white;border-radius:20px">
+  <h2 style="font-size:32px;margin-bottom:15px">Berlangganan Newsletter</h2>
+  <p style="font-size:16px;margin-bottom:25px">Dapatkan update promo, tips belajar, dan info menarik langsung ke Email & WhatsApp Anda!</p>
+
+  <form id="subscribe-form" style="display:flex;flex-direction:column;gap:15px">
+    <input type="email" id="sub-email" placeholder="Masukkan Email" required style="padding:12px;border-radius:10px;border:none;width:100%;max-width:100%">
+    <input type="text" id="sub-wa" placeholder="Nomor WhatsApp (misal 628123456789)" required style="padding:12px;border-radius:10px;border:none;width:100%;max-width:100%">
+    <button type="submit" class="btn" style="background:white;color:#007E6E;padding:12px;border-radius:50px;font-weight:bold;border:none;cursor:pointer">Berlangganan</button>
+    <p id="sub-msg" style="margin-top:10px;font-size:14px"></p>
+  </form>
+</section>
+
+<section id="admin" class="fade">
+  <div class="title"><h2>Admin Dashboard</h2></div>
+  <div class="cards">
+    <div class="card">
+      <h3>Total Pendaftar</h3>
+      <h1 id="totalDaftar">0</h1>
+    </div>
+    <div class="card">
+      <h3>Data</h3>
+      <button class="btn" onclick="exportCSV()">Download CSV</button>
+    </div>
+  </div>
+</section>
+
+<section id="jadwal" class="fade">
+  <div class="title">
+    <h2>Program & Jadwal Belajar</h2>
+    <p style="color:#555;margin-top:10px">
+      Pilih program sesuai kebutuhan dan jadwal yang fleksibel
+    </p>
+  </div>
+
+  <div class="schedule-container">
+    <div class="schedule-card">
+      <h3>📘 SD – Semua Mapel</h3>
+      <p>Kelas 4 – 6</p>
+      <ul>
+        <li>🗓 Senin & Rabu</li>
+        <li>⏰ 15.30 – 17.00 WIB</li>
+        <li>📍 Offline / Online</li>
+      </ul>
+      <span class="status open">Tersedia</span>
+    </div>
+
+    <div class="schedule-card">
+      <h3>📗 SMP – Matematika & IPA</h3>
+      <p>Kelas 7 – 9</p>
+      <ul>
+        <li>🗓 Selasa & Kamis</li>
+        <li>⏰ 16.00 – 17.30 WIB</li>
+        <li>📍 Offline</li>
+      </ul>
+      <span class="status open">Tersedia</span>
+    </div>
+
+    <div class="schedule-card">
+      <h3>📕 SMA – UTBK</h3>
+      <p>Kelas 10 – 12</p>
+      <ul>
+        <li>🗓 Jumat & Sabtu</li>
+        <li>⏰ 18.30 – 20.00 WIB</li>
+        <li>📍 Online</li>
+      </ul>
+      <span class="status full">Penuh</span>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px">
+    <a href="#payment" class="btn">Daftar & Bayar Sekarang</a>
+  </div>
+</section>
+
+<section class="fade">
+  <div class="title">
+    <h2>Ikuti Local Geniuz</h2><br>
+    <p style="color:#555">Konten edukasi & informasi bimbel</p>
+  </div>
+
+  <div class="socials">
+    <!-- Instagram -->
+    <a href="https://instagram.com/localgeniuz" target="_blank" aria-label="Instagram">
+      <img src="logoig.png" alt="Instagram" style="width:24px;height:24px">
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://tiktok.com/@localgeniuz" target="_blank" aria-label="TikTok">
+      <img src="logott.png" alt="TikTok" style="width:24px;height:24px">
+    </a>
+
+    <!-- Lemon8 -->
+    <a href="https://www.lemon8-app.com/@localgeniuz" target="_blank" aria-label="Lemon8">
+      <img src="Lemond8-removebg-preview.png" alt="Lemon8" style="width:24px;height:24px">
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@localgeniuz" target="_blank" aria-label="YouTube">
+      <img src="logoyt.png" alt="YouTube" style="width:24px;height:24px">
+    </a>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/628xxxxxxxxxx" target="_blank" aria-label="WhatsApp">
+      <img src="Whatsapp_Logo.png" alt="WhatsApp" style="width:24px;height:24px">
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>
+© 2025 Local Geniuz <br>
+Bimbingan Belajar • Education • Future Skills
+</p>
+</footer>
+
+<script>
+// SCROLL ANIMATION
+const fades=document.querySelectorAll('.fade');
+const observer=new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')});
+},{threshold:.3});
+fades.forEach(f=>observer.observe(f));
+
+// TESTIMONI SLIDER
+const testi=[
+  {
+    text:"Belajarnya jadi lebih paham dan tidak membosankan. Nilai saya meningkat.",
+    name:"– Siswa SMP"
+  },
+  {
+    text:"Anak saya lebih rajin belajar dan lebih percaya diri di sekolah.",
+    name:"– Orang Tua Siswa"
+  },
+  {
+    text:"Tutor menjelaskan dengan sabar dan mudah dipahami.",
+    name:"– Siswa SMA"
+  }
+];
+
+let i=0;
+setInterval(()=>{
+  i=(i+1)%testi.length;
+  document.getElementById("testiText").innerText=testi[i].text;
+  document.getElementById("testiName").innerText=testi[i].name;
+},4000);
+
+// SET TANGGAL PROMO
+const promoDate = new Date("2025-12-31T23:59:59").getTime();
+
+const countdown = setInterval(() => {
+  const now = new Date().getTime();
+  const distance = promoDate - now;
+
+  if(distance < 0){
+    clearInterval(countdown);
+    document.getElementById("countdown").innerHTML = "Promo Telah Berakhir!";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000*60*60*24));
+  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+  document.getElementById("days").innerText = days.toString().padStart(2,'0');
+  document.getElementById("hours").innerText = hours.toString().padStart(2,'0');
+  document.getElementById("minutes").innerText = minutes.toString().padStart(2,'0');
+  document.getElementById("seconds").innerText = seconds.toString().padStart(2,'0');
+}, 1000);
+
+const accBtns = document.querySelectorAll(".accordion-btn");
+
+accBtns.forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    const content = btn.nextElementSibling;
+
+    // Tutup semua item lain
+    document.querySelectorAll(".accordion-content").forEach(c=>{
+      if(c !== content) c.style.maxHeight = null;
+    });
+
+    // Toggle item ini
+    if(content.style.maxHeight){
+      content.style.maxHeight = null;
+    }else{
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+});
+
+const quiz = [
+  {
+    question: "Apa arti kata 'apple' dalam bahasa Indonesia?",
+    options: ["Apel", "Pisang", "Jeruk", "Mangga"],
+    answer: "Apel"
+  },
+  {
+    question: "Berapa hasil 7 + 5?",
+    options: ["12","10","11","13"],
+    answer: "12"
+  },
+  {
+    question: "Apa warna langit saat cerah?",
+    options: ["Biru","Merah","Hijau","Kuning"],
+    answer: "Biru"
+  }
+];
+
+let current = 0;
+let score = 0;
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("next-btn");
+const resultEl = document.getElementById("result");
+
+function loadQuestion(){
+  nextBtn.style.display = "none";
+  resultEl.style.display = "none";
+  optionsEl.innerHTML = "";
+  const q = quiz[current];
+  questionEl.innerText = q.question;
+  q.options.forEach(opt=>{
+    const btn = document.createElement("button");
+    btn.innerText = opt;
+    btn.addEventListener("click", ()=>{
+      if(opt === q.answer) score++;
+      nextBtn.style.display = "block";
+      Array.from(optionsEl.children).forEach(b=>b.disabled=true);
+    });
+    optionsEl.appendChild(btn);
+  });
+}
+
+nextBtn.addEventListener("click", ()=>{
+  current++;
+  if(current < quiz.length){
+    loadQuestion();
+  }else{
+    showResult();
+  }
+});
+
+function showResult(){
+  questionEl.style.display="none";
+  optionsEl.style.display="none";
+  nextBtn.style.display="none";
+  resultEl.style.display="block";
+  resultEl.innerHTML = `Kamu mendapatkan skor ${score} dari ${quiz.length}!<br><br>
+  <a href="modul-free.pdf" class="btn" target="_blank">Download Modul Gratis</a>`;
+}
+
+// Load quiz pertama
+loadQuestion();
+
+const galleryItems = document.querySelectorAll(".gallery-item");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxVideo = document.getElementById("lightbox-video");
+const closeLightbox = document.getElementById("close-lightbox");
+
+galleryItems.forEach(item=>{
+  item.addEventListener("click", ()=>{
+    const videoSrc = item.dataset.video;
+    if(videoSrc){
+      lightboxImg.style.display="none";
+      lightboxVideo.style.display="block";
+      lightboxVideo.src = videoSrc;
+    }else{
+      lightboxVideo.style.display="none";
+      lightboxVideo.src="";
+      lightboxImg.style.display="block";
+      lightboxImg.src = item.src;
+    }
+    lightbox.style.display="flex";
+  });
+});
+
+closeLightbox.addEventListener("click", ()=>{
+  lightbox.style.display="none";
+  lightboxVideo.src="";
+});
+
+// FORM WA
+document.getElementById("formDaftar").addEventListener("submit",function(e){
+  e.preventDefault();
+  const nama=nama.value,kelas=kelas.value,prog=program.value,wa=wa.value;
+  if(!nama||!kelas||!prog||!wa){
+    error.innerText="Semua data wajib diisi!";
+    return;
+  }
+  const msg=`Halo Local Geniuz,%0ASaya ingin mendaftar:%0A
+Nama: ${nama}%0AKelas: ${kelas}%0AProgram: ${prog}%0AWA: ${wa}`;
+  window.open(`https://wa.me/628xxxxxxxxxx?text=${msg}`);
+});
+</script>
+
+<script>
+// =======================
+// LEVEL 3 ADDITION
+// =======================
+
+// AMBIL DATA
+let dataPendaftar = JSON.parse(localStorage.getItem("localGeniuz")) || [];
+document.getElementById("totalDaftar").innerText = dataPendaftar.length;
+
+// MODIFIKASI FORM
+document.getElementById("formDaftar").addEventListener("submit",function(e){
+  e.preventDefault();
+
+  const data = {
+    nama: nama.value,
+    kelas: kelas.value,
+    program: program.value,
+    wa: wa.value,
+    waktu: new Date().toLocaleString()
+  };
+
+  if(!data.nama || !data.kelas || !data.program || !data.wa){
+    error.innerText = "Semua data wajib diisi!";
+    return;
+  }
+
+  dataPendaftar.push(data);
+  localStorage.setItem("localGeniuz", JSON.stringify(dataPendaftar));
+  document.getElementById("totalDaftar").innerText = dataPendaftar.length;
+
+  const msg = `Halo Local Geniuz,%0ASaya ingin mendaftar:%0A
+Nama: ${data.nama}%0AKelas: ${data.kelas}%0AProgram: ${data.program}%0AWA: ${data.wa}`;
+
+  window.open(`https://wa.me/628xxxxxxxxxx?text=${msg}`);
+  this.reset();
+  alert("Pendaftaran berhasil!");
+});
+
+// EXPORT CSV
+function exportCSV(){
+  let csv = "Nama,Kelas,Program,WhatsApp,Waktu\n";
+  dataPendaftar.forEach(d=>{
+    csv += `${d.nama},${d.kelas},${d.program},${d.wa},${d.waktu}\n`;
+  });
+
+  const blob = new Blob([csv], {type:"text/csv"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "pendaftar-local-geniuz.csv";
+  a.click();
+}
+const chatBtn = document.getElementById("chat-btn");
+const chatBox = document.getElementById("chat-box");
+const sendBtn = document.getElementById("send-btn");
+const chatInput = document.getElementById("chat-input");
+const chatMessages = document.getElementById("chat-messages");
+
+// Toggle chat box
+chatBtn.addEventListener("click", ()=>{
+  chatBox.style.display = chatBox.style.display==="block" ? "none" : "block";
+});
+
+// Kirim pesan
+sendBtn.addEventListener("click", sendMessage);
+chatInput.addEventListener("keypress", e=>{
+  if(e.key==="Enter") sendMessage();
+});
+
+function sendMessage(){
+  const msg = chatInput.value.trim();
+  if(!msg) return;
+
+  // tampilkan pesan user
+  const userMsg = document.createElement("div");
+  userMsg.style.textAlign="right";
+  userMsg.style.marginBottom="10px";
+  userMsg.innerHTML = `<span style="background:#e1f5fe;padding:6px 12px;border-radius:12px;display:inline-block">${msg}</span>`;
+  chatMessages.appendChild(userMsg);
+
+  // scroll ke bawah
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  // reset input
+  chatInput.value="";
+
+  // opsi: kirim ke WA
+  const waNumber = "628xxxxxxxxxx"; // ganti dengan nomor WA admin
+  const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
+  
+  // tampilkan link WA
+  const botMsg = document.createElement("div");
+  botMsg.style.textAlign="left";
+  botMsg.style.marginBottom="10px";
+  botMsg.innerHTML = `<span style="background:#f1f1f1;padding:6px 12px;border-radius:12px;display:inline-block">Klik <a href="${waLink}" target="_blank" style="color:var(--primary)">di sini</a> untuk mengirim pesan ke WhatsApp kami.</span>`;
+  chatMessages.appendChild(botMsg);
+
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+document.getElementById("subscribe-form").addEventListener("submit", function(e){
+  e.preventDefault();
+  const email = document.getElementById("sub-email").value.trim();
+  const wa = document.getElementById("sub-wa").value.trim();
+  const msgEl = document.getElementById("sub-msg");
+
+  if(!email || !wa){
+    msgEl.style.color="yellow";
+    msgEl.innerText="Email dan WhatsApp wajib diisi!";
+    return;
+  }
+
+  // Kirim ke WhatsApp admin
+  const waNumber = "628xxxxxxxxxx"; // ganti dengan nomor WA admin
+  const waMsg = `Halo Local Geniuz, saya ingin berlangganan newsletter:%0AEmail: ${email}%0AWA: ${wa}`;
+  window.open(`https://wa.me/${waNumber}?text=${waMsg}`);
+
+  // Pesan sukses di web
+  msgEl.style.color="lightgreen";
+  msgEl.innerText="Terima kasih! Silakan cek WhatsApp Anda untuk konfirmasi.";
+
+  // Reset form
+  document.getElementById("subscribe-form").reset();
+});
+document.getElementById("payment-form").addEventListener("submit", function(e){
+  e.preventDefault();
+  const nama = document.getElementById("pay-nama").value.trim();
+  const kelas = document.getElementById("pay-kelas").value.trim();
+  const prog = document.getElementById("pay-program").value;
+  const wa = document.getElementById("pay-wa").value.trim();
+  const errorEl = document.getElementById("pay-error");
+
+  if(!nama || !kelas || !prog || !wa){
+    errorEl.innerText="Semua data wajib diisi!";
+    return;
+  }
+
+  // Contoh integrasi via WhatsApp payment link
+  const msg = `Halo Local Geniuz,%0ASaya ingin mendaftar:%0A
+Nama: ${nama}%0AKelas: ${kelas}%0AProgram: ${prog}%0AWA: ${wa}%0ARequest pembayaran online.`;
+
+  // buka WhatsApp + instruksi pembayaran
+  window.open(`https://wa.me/628xxxxxxxxxx?text=${msg}`);
+});
+const programData = [
+  {
+    title:"📘 SD – Semua Mapel",
+    kelas:"Kelas 4 – 6",
+    hari:"Senin & Rabu",
+    jam:"15.30 – 17.00 WIB",
+    mode:"Offline / Online",
+    status:"open"
+  },
+  {
+    title:"📗 SMP – Matematika & IPA",
+    kelas:"Kelas 7 – 9",
+    hari:"Selasa & Kamis",
+    jam:"16.00 – 17.30 WIB",
+    mode:"Offline",
+    status:"open"
+  },
+  {
+    title:"📕 SMA – UTBK",
+    kelas:"Kelas 10 – 12",
+    hari:"Jumat & Sabtu",
+    jam:"18.30 – 20.00 WIB",
+    mode:"Online",
+    status:"full"
+  }
+];
+
+</script>
+
+</body>
+</html>
